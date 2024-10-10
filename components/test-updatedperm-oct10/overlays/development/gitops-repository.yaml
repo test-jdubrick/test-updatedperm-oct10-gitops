@@ -1,0 +1,6 @@
+apiVersion: "pipelinesascode.tekton.dev/v1alpha1"
+kind: Repository
+metadata:
+  name: test-updatedperm-oct10-gitops-repository
+spec:
+  url: https://github.com/test-jdubrick/test-updatedperm-oct10-gitops

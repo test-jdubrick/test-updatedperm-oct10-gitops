@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-updatedperm-oct10-app
+  namespace: ai-rhdh
+  finalizers: ["resources-finalizer.argocd.argoproj.io"] 
+spec:
+  project: default
+  source:
+    path: ./components/test-updatedperm-oct10/overlays/development
+    repoURL: https://github.com/test-jdubrick/test-updatedperm-oct10-gitops.git
+    targetRevision: main
+  destination:
+    namespace: rhdh-app
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels: 
+        argocd.argoproj.io/managed-by: ai-rhdh
+    automated: 
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true

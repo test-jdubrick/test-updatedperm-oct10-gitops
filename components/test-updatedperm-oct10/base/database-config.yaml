@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-updatedperm-oct10-database-config
+data:
+  VECTORDB_HOST: "test-updatedperm-oct10-database"
+  VECTORDB_PORT: ""
